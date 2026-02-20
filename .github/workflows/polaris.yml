@@ -35,3 +35,5 @@ jobs:
           ### Optional: wait for results, fail on findings, etc. true
           polaris_waitForScan: "true"
           polaris_prComment_enabled: "true"
+
+          ###token added
