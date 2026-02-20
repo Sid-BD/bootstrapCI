@@ -32,6 +32,6 @@ jobs:
           polaris_assessment_types: "SCA"
           polaris_test_sca_type: "SCA-SIGNATURE"
 
-          ### Optional: wait for results, fail on findings, etc.
+          ### Optional: wait for results, fail on findings, etc. true
           polaris_waitForScan: "true"
           polaris_prComment_enabled: "true"
