@@ -21,7 +21,7 @@ jobs:
 
       # Synopsys official multi-tool action; we’ll use its Polaris mode.
       - name: Run Polaris SCA Signature Scan
-        uses: synopsys-sig/synopsys-action@v4
+        uses: blackduck-inc/black-duck-security-scan@v2
         with:
           ### Required identifiers
           polaris_application_name: "Polaris Demo App"
