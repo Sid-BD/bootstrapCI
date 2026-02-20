@@ -1,0 +1,37 @@
+name: Polaris SCA Signature Scan
+
+on:
+  push:
+    branches: bootstrapCI-CI
+  pull_request:
+    branches: bootstrapCI-CI
+
+jobs:
+  polaris-signature:
+    runs-on: ubuntu-latest
+
+    env:
+      # Passed to the action as environment variables
+      POLARIS_SERVER_URL: ${{ secrets.POLARIS_SERVER_URL }}
+      POLARIS_ACCESS_TOKEN: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Synopsys official multi-tool action; we’ll use its Polaris mode.
+      - name: Run Polaris SCA Signature Scan
+        uses: synopsys-sig/synopsys-action@v4
+        with:
+          ### Required identifiers
+          polaris_application_name: "Polaris Demo App"
+          polaris_project_name: "bootstrapCI"
+          polaris_branch_name: "bootstrapCI-CI"
+
+          ### Only SCA; and tell Polaris to run SIGNATURE analysis
+          polaris_assessment_types: "SCA"
+          polaris_test_sca_type: "SCA-SIGNATURE"
+
+          ### Optional: wait for results, fail on findings, etc.
+          polaris_waitForScan: "true"
+          polaris_prComment_enabled: "true"
